@@ -1,7 +1,7 @@
 **PID Controller Simulation with Step Response Analysis**
 
 Description
-This project implements a simulation of a PID (Proportional, Integral, Derivative) controller applied to a second-order plant to analyze the impact of the parameters Kp, Ki, and Kd on the system's step response. The code, contained in main.py, generates six plots displaying the system's response for various combinations of Kp, Ki, and Kd, including metrics such as overshoot (%) and settling time (Ts). The plant used is a second-order transfer function, represented by ( \frac{1}{s^2 + 2s + 1} ).
+This project implements a simulation of a PID (Proportional, Integral, Derivative) controller applied to a second-order plant to analyze the impact of the parameters Kp, Ki, and Kd on the system's step response. The code, contained in main.py, generates six plots displaying the system's response for various combinations of Kp, Ki, and Kd, including metrics such as overshoot (%) and settling time (Ts). The plant used is a second-order transfer function, represented by 1/(s² + 2s + 1) .
 The plots analyze:
 
 Variation of Kp with fixed Ki and Kd.
