@@ -1,137 +1,72 @@
----
-````markdown
-# 🎯 PID Controller Simulation with Step Response Analysis
+**PID Controller Simulation with Step Response Analysis**
 
-## 📘 Overview
+Description
+This project implements a simulation of a PID (Proportional, Integral, Derivative) controller applied to a second-order plant to analyze the impact of the parameters Kp, Ki, and Kd on the system's step response. The code, contained in main.py, generates six plots displaying the system's response for various combinations of Kp, Ki, and Kd, including metrics such as overshoot (%) and settling time (Ts). The plant used is a second-order transfer function, represented by ( \frac{1}{s^2 + 2s + 1} ).
+The plots analyze:
 
-This project presents a **numerical simulation and analysis** of a PID (Proportional–Integral–Derivative) controller applied to a second-order plant. It aims to visualize the impact of the parameters **Kp**, **Ki**, and **Kd** on the system's step response.
+Variation of Kp with fixed Ki and Kd.
+Variation of Ki with fixed Kp and Kd.
+Variation of Kd with fixed Kp and Ki.
+Variation of Ki with low Kp.
+Variation of Kd with high Kp.
+Variation of Kd with high Ki.
 
-The simulation is performed using Python with scientific libraries, and generates **six comparative plots** showing how each PID parameter affects the system behavior — including **overshoot (%)** and **settling time (Ts)**.
+Dependencies
+The code relies on the following Python libraries:
 
-<p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/9/92/PID_Response_Analysis.png" width="600" alt="PID step response (illustrative)">
-</p>
+NumPy (version 1.21.0 recommended): For mathematical operations and array manipulation [HARRIS et al., 2020].
+Matplotlib (version 3.4.2 recommended): For graphical visualization of results [HUNTER, 2007].
+Python Control Systems Library (version 0.9.0 recommended): For simulation and analysis of linear control systems [MURRAY et al., 2021].
 
----
-
-## ⚙️ System Model
-
-The plant used in this simulation is a **second-order system** represented by the transfer function:
-
-\[
-G(s) = \frac{1}{s^2 + 2s + 1}
-\]
-
-The PID controller is implemented in the **parallel form**:
-
-\[
-G_c(s) = K_p + \frac{K_i}{s} + K_d \cdot s
-\]
-
-The **closed-loop system** is constructed using **unit negative feedback**.
-
----
-
-## 📊 Plot Analysis
-
-The simulation generates six subplots that explore the step response under the following conditions:
-
-1. **Variation of Kp** (fixed Ki and Kd)
-2. **Variation of Ki** (fixed Kp and Kd)
-3. **Variation of Kd** (fixed Kp and Ki)
-4. **Variation of Ki** with low Kp
-5. **Variation of Kd** with high Kp
-6. **Variation of Kd** with high Ki
-
-Each plot includes:
-- Step response curve
-- Overshoot (%)
-- Settling time (s)
-
----
-
-## 🧩 Dependencies
-
-This project requires the following Python libraries:
-
-| Library         | Version     | Purpose                                      |
-|----------------|-------------|----------------------------------------------|
-| `numpy`        | 1.21.0      | Numerical computations [Harris et al., 2020] |
-| `matplotlib`   | 3.4.2       | Plotting and visualization [Hunter, 2007]    |
-| `control`      | 0.9.0       | Control system modeling [Murray et al., 2021]|
-
----
-
-## 🚀 How to Run
-
-### In Google Colab:
-
-```python
+Installation in Google Colab
+In Google Colab, install the required libraries with the following commands:
 !pip install numpy==1.21.0
 !pip install matplotlib==3.4.2
 !pip install control==0.9.0
-````
 
-Then copy the contents of `main.py` into a code cell and run.
-
----
-
-### In Local Environment (e.g., Jupyter Notebook):
-
-Use the terminal or Jupyter:
-
-```bash
+Installation in Local Environment (Jupyter Notebook)
+In a local environment, install the libraries with:
 pip install numpy==1.21.0
 pip install matplotlib==3.4.2
 pip install control==0.9.0
-```
 
-Then run the script using:
+Note: The specified versions are recommended for consistency with the cited references. Newer versions may be used, but compatibility should be verified.
+How to Use
 
-```bash
-python main.py
-```
+Set Up the Environment:
 
----
+In Google Colab, run the installation commands above if needed.
+In a local environment, ensure the libraries are installed in the correct Python environment.
 
-## 🧪 Customization
 
-You can adapt the simulation easily:
+Run the Code:
 
-* **Plant:** Modify `plant = ctrl.TransferFunction([1], [1, 2, 1])` to test other systems.
-* **PID Parameters:** Change the lists `kp_values`, `ki_values`, `kd_values`.
-* **Simulation Time:** Adjust `t = np.linspace(0, 10, 1000)` to simulate longer or shorter responses.
+Copy the contents of main.py into a Google Colab cell or a Jupyter Notebook, or run it directly as a Python script.
+Execute the code. It will generate a figure with six subplots showing the step response for different Kp, Ki, and Kd values, along with overshoot and settling time metrics.
 
----
 
-## 📂 Code Structure
+Customization:
 
-| File        | Description                                |
-| ----------- | ------------------------------------------ |
-| `main.py`   | Main simulation script with plotting logic |
-| `README.md` | Project documentation                      |
+Plant: Modify the plant's transfer function in the code (plant = ctrl.TransferFunction([1], [1, 2, 1])) to simulate other systems.
+PID Parameters: Adjust kp_values, ki_values, and kd_values to test different configurations.
+Time Range: Change the time vector (t = np.linspace(0, 10, 1000)) to adjust the simulation duration.
 
-### Main Functions:
 
-* `simulate_pid()`: Computes closed-loop step response for given Kp, Ki, Kd.
-* `calculate_metrics()`: Computes overshoot and settling time from step response.
+Visualization:
 
----
+The plots are generated automatically upon running the code. Each plot includes legends with Kp, Ki, Kd values, overshoot (%), and settling time (s).
 
-## 📚 References
 
-* Harris, C. R., et al. (2020). *Array programming with NumPy*. Nature, **585**, 357–362.
-* Hunter, J. D. (2007). *Matplotlib: A 2D graphics environment*. Computing in Science & Engineering, **9**(3), 90–95.
-* Murray, R. M., et al. (2021). *Python Control Systems Library*. [Online Documentation](https://python-control.readthedocs.io)
 
----
+Code Structure
 
-## 📌 License
+simulate_pid: Function that simulates the closed-loop system with a PID controller and returns the step response.
+calculate_metrics: Calculates overshoot (%) and settling time (Ts) based on the step response.
+Main Script: Configures the system, defines test parameters, and generates six plots with varying PID parameters.
 
-This project is open-source and licensed under the [MIT License](LICENSE).
+References
 
----
-
-> *“Simulation brings insight. Understanding PID behavior numerically is a foundation for building real-world control systems with confidence.”*
-
+Harris, C. R., et al. (2020). Array programming with NumPy. Nature, 585, 357–362.
+Hunter, J. D. (2007). Matplotlib: A 2D graphics environment. Computing in Science & Engineering, 9(3), 90–95.
+Murray, R. M., et al. (2021). Python Control Systems Library. Available at: https://python-control.readthedocs.io.
 
